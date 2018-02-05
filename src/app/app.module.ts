@@ -1,24 +1,73 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-
-import { AppComponent } from './app.component';
+import { StoreModule, MetaReducer } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import {
+    HTTP_INTERCEPTORS,
+    HttpClientModule
+} from '@angular/common/http';
+import { AppComponent } from './core/app.component';
 import { HomeComponent } from './home/home.component';
+import { NgxErrorsModule } from '@ultimate/ngxerrors';
+import { storeFreeze } from 'ngrx-store-freeze';
+import {
+    RouterStateSerializer,
+    StoreRouterConnectingModule
+} from '@ngrx/router-store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import {
+    effects,
+    CustomRouterStateSerializer,
+    reducers
+} from './core/store';
+
+
+
+const enviorment = {
+    development:   false,
+    production:  true,
+};
+export const metaReducers: MetaReducer<any>[] = !enviorment.production ? [ storeFreeze ] : [];
+export const CORE_PROVIDERS: Array<any> = [
+    {
+        provide: RouterStateSerializer,
+        useClass: CustomRouterStateSerializer
+    }
+];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-  ],
-  imports: [
-    BrowserModule.withServerTransition({appId: 'my-app'}),
-    RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full'},
-      { path: 'lazy', loadChildren: './lazy/lazy.module#LazyModule'},
-      { path: 'lazy/nested', loadChildren: './lazy/lazy.module#LazyModule'}
-    ])
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        HomeComponent
+    ],
+    imports: [
+        HttpClientModule,
+        NgxErrorsModule,
+        StoreModule.forRoot(reducers, { metaReducers }),
+        StoreRouterConnectingModule,
+        EffectsModule.forRoot(effects),
+        enviorment.development ? StoreDevtoolsModule.instrument() : [],
+
+        BrowserModule.withServerTransition({ appId: 'my-app' }),
+        RouterModule.forRoot([
+            {
+                path: '',
+                component: HomeComponent,
+                pathMatch: 'full'
+            },
+            {
+                path: 'page',
+                loadChildren: './page/page.module#PageModule'
+            },
+            {
+                path: 'page/nested',
+                loadChildren: './page/page.module#PageModule'
+            }
+        ])
+    ],
+    providers: [ ...CORE_PROVIDERS ],
+    bootstrap: [ AppComponent ]
 })
-export class AppModule { }
+export class AppModule {
+}
