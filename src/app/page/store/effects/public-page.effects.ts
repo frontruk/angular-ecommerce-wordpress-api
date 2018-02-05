@@ -23,22 +23,23 @@ export class PublicPageEffects {
                 private publicPageServices: PublicPageServices) {
     }
 
-    // @Effect({ dispatch: true })
-    // GetPages$ = this.actions$.ofType(fromPublicPage.GET_PAGES)
-    //     .pipe(
-    //         switchMap((request: any) => {
-    //             return this.publicPageServices
-    //                 .getPages(120)
-    //                 .pipe(
-    //                     map((filteredResult: Array<any>) => {
-    //                         return new fromPublicPage.GetPageSuccess(filteredResult);
-    //                     }),
-    //                     catchError((error: HttpErrorResponse) => {
-    //                         return of(new fromPublicPage.GetPageFailure(error));
-    //                     })
-    //                 );
-    //         })
-    //     );
+    @Effect({ dispatch: true })
+    GetPages$ = this.actions$.ofType(fromPublicPage.GET_PAGES)
+        .pipe(
+            switchMap((request: any) => {
+                return this.publicPageServices
+                    .getPages()
+                    .pipe(
+                        map((filteredResult: Array<any>) => {
+                            console.log('effects works')
+                            return new fromPublicPage.GetPagesSuccess(filteredResult);
+                        }),
+                        catchError((error: HttpErrorResponse) => {
+                            return of(new fromPublicPage.GetPagesFailure(error));
+                        })
+                    );
+            })
+        );
 
 
 }

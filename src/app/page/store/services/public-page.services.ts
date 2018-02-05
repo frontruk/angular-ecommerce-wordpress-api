@@ -14,10 +14,10 @@ export class PublicPageServices {
     ) {}
 
     getPage( qty: any): Observable<Array<any>> {
-        return this.http.get<Array<any>>(`${api.apiUrl}/${api.wp}/pages?per_page=${qty}`);
+        return this.http.get<Array<any>>(`${api.apiUrl + api.wp}/pages?per_page=${qty}`);
     }
-    getPages( qty: number): Observable<Array<any>> {
-        return this.http.get<Array<any>>(`${api.apiUrl}/${api.wp}/pages?per_page=${qty}`);
+    getPages(): Observable<Array<any>> {
+        return this.http.get<Array<any>>(`${api.apiUrl + api.wp}/pages`);
     }
 
 }

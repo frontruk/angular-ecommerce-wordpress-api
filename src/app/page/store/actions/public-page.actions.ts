@@ -25,7 +25,7 @@ export const GET_PAGES_FAIL = '[Pages] Get public page  by hostname fail';
 
 export class GetPages implements Action {
     readonly type = GET_PAGES;
-    constructor(public payload: any) {}
+    // constructor(public payload: any) {}
 }
 export class GetPagesSuccess implements Action {
     readonly type = GET_PAGES_SUCCESS;

@@ -1,5 +1,5 @@
 import * as fromPage from '../actions/public-page.actions';
-import { PageApiResponse } from '../../../core/models/page';
+import { PageApiResponse } from '../../models/page';
 
 
 export interface State {

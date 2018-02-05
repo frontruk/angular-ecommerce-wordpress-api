@@ -1,0 +1,24 @@
+@import '../../../../styles/vars';
+
+@import url('http://fonts.googleapis.com/css?family=Playfair+Display+SC:400italic,700,900|Raleway:500|Martel+Sans:400,700');
+
+.article-block {
+  padding: 45px 55px 30px;
+  position: relative;
+  color: inherit;
+  background: $color_secondary;
+  min-height: $item_width;
+  cursor: pointer;
+  text-align: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-justify-content: center;
+  justify-content: center;
+}

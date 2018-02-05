@@ -22,11 +22,11 @@ import {
     reducers
 } from './core/store';
 
-
+import * as fromGuards from './page/guards/';
 
 const enviorment = {
     development:   false,
-    production:  true,
+    production: true,
 };
 export const metaReducers: MetaReducer<any>[] = !enviorment.production ? [ storeFreeze ] : [];
 export const CORE_PROVIDERS: Array<any> = [
@@ -54,19 +54,26 @@ export const CORE_PROVIDERS: Array<any> = [
             {
                 path: '',
                 component: HomeComponent,
-                pathMatch: 'full'
+                pathMatch: 'full',
+
             },
             {
                 path: 'page',
-                loadChildren: './page/page.module#PageModule'
+                loadChildren: './page/page.module#PageModule',
+                canActivate: [
+                    fromGuards.PrivatePagesGuard,
+                ]
             },
             {
                 path: 'page/nested',
-                loadChildren: './page/page.module#PageModule'
+                loadChildren: './page/page.module#PageModule',
+                canActivate: [
+                    fromGuards.PrivatePagesGuard,
+                ]
             }
         ])
     ],
-    providers: [ ...CORE_PROVIDERS ],
+    providers: [ ...CORE_PROVIDERS, ...fromGuards.guards ],
     bootstrap: [ AppComponent ]
 })
 export class AppModule {
