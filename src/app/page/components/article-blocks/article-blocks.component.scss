@@ -1,4 +1,5 @@
 @import '../../../../styles/vars';
+@import '../../../../styles/viewport';
 
 @import url('http://fonts.googleapis.com/css?family=Playfair+Display+SC:400italic,700,900|Raleway:500|Martel+Sans:400,700');
 
@@ -21,4 +22,85 @@
   flex-direction: column;
   -webkit-justify-content: center;
   justify-content: center;
+}
+
+/* Grid item "border" */
+.article-block::before {
+  position: absolute;
+  content: '';
+  top: 0px;
+  right: 55px;
+  bottom: 0px;
+  left: 55px;
+  border-bottom: 1px solid rgba(74,74,74,0.075);
+}
+
+.article-block * {
+  z-index: 10;
+}
+
+
+@media screen and (min-width: $viewport_xs) {
+
+  .article-block{
+    padding: 45px 45px 30px;
+  }
+
+}
+
+
+@media screen and (min-width: $viewport_s) {
+  /* 2 columns */
+  .article-block {
+    width: 50%;
+    border: none;
+  }
+
+  .article-block::before {
+    top: 5px;
+    right: 5px;
+    bottom: 5px;
+    left: 5px;
+    border: 1px solid rgba(74,74,74,0.075);
+    -webkit-transition: opacity 0.3s;
+    transition: opacity 0.3s;
+  }
+
+  .article-block:hover::before,
+  .article-block:focus::before {
+    border: 3px solid rgba(129,196,131,0.5);
+  }
+
+  .grid__item--loading.grid__item::before {
+    opacity: 0;
+  }
+}
+
+
+@media screen and (min-width: $viewport_m) {
+  /* 3 columns */
+  .article-block {
+    width: 33.333%;
+  }
+}
+
+@media screen and (min-width: $viewport_l) {
+  /* 4 columns */
+  .article-block {
+    width: 25%;
+  }
+}
+
+@media screen and (min-width: $viewport_xl) {
+  /* 5 columns */
+  .article-block {
+    width: 20%;
+  }
+}
+
+@media screen and (min-width: $viewport_xxl) {
+  /* 6 columns */
+  .article-block {
+    width: 16.66%;
+  }
 }

@@ -8,9 +8,17 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { PublicPageServices } from './store/services/public-page.services';
 import { ArticleBlocksComponent } from './components/article-blocks/article-blocks.component';
+import { SidebarComponent } from './components/sidebar/sidebar.componet';
+import { BodyContentComponent } from './components/body-content/body-content.component';
 
 @NgModule({
-    declarations: [ LayoutComponent, ArticlesComponent, ArticleBlocksComponent ],
+    declarations: [
+        LayoutComponent,
+        ArticlesComponent,
+        ArticleBlocksComponent,
+        SidebarComponent,
+        BodyContentComponent,
+    ],
     imports: [
         CommonModule,
         StoreModule.forFeature('public', reducers),
@@ -18,12 +26,6 @@ import { ArticleBlocksComponent } from './components/article-blocks/article-bloc
         RouterModule.forChild([
             {
                 path: '',
-                component: LayoutComponent,
-                pathMatch: 'full',
-
-            },
-            {
-                path: ':id/:id',
                 component: LayoutComponent,
                 pathMatch: 'full',
 

@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 import * as fromPage from '../reducers/';
 
 import { api } from '../../../core/environments/api.config';
+import { MenuCategory } from '../../models/menu';
 
 @Injectable()
 export class PublicPageServices {
@@ -19,5 +20,8 @@ export class PublicPageServices {
     getPages(): Observable<Array<any>> {
         return this.http.get<Array<any>>(`${api.apiUrl + api.wp}/pages`);
     }
-
+    getMenu(id): Observable<MenuCategory> {
+        console.log('aou')
+        return this.http.get<MenuCategory>(`${api.apiUrl + api.menu}/menus/${id}`);
+    }
 }

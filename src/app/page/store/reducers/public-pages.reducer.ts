@@ -1,7 +1,6 @@
 import * as fromPage from '../actions/public-page.actions';
 import { PageApiResponse } from '../../models/page';
 
-
 export interface State {
     loading: boolean;
     loaded: boolean;
@@ -71,6 +70,6 @@ export function reducer(state: State = initialState, action: fromPage.PublicPage
     }
 }
 export const PagesEntitiesById = (state: State) => state.entities;
-export const getPages = (state: State) => state.data;
+export const Pages = (state: State) => state.data;
 export const arePagesLoading = (state: State) => state.loading;
 export const arePagesLoaded = (state: State) => state.loaded;

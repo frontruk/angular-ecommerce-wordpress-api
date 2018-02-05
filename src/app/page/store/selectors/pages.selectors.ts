@@ -22,4 +22,4 @@ export const getAllPagesByIds = createSelector(
 
 export const arePagesLoaded = createSelector(getPagesState, fromPages.arePagesLoaded);
 export const arePagesLoading = createSelector(getPagesState, fromPages.arePagesLoading);
-export const getActivePage = createSelector(getPagesState, fromPages.getPages);
+export const getActivePage = createSelector(getPagesState, fromPages.Pages);

@@ -25,7 +25,7 @@ import {
 import * as fromGuards from './page/guards/';
 
 const enviorment = {
-    development:   false,
+    development:    false,
     production: true,
 };
 export const metaReducers: MetaReducer<any>[] = !enviorment.production ? [ storeFreeze ] : [];
@@ -61,6 +61,7 @@ export const CORE_PROVIDERS: Array<any> = [
                 path: 'page',
                 loadChildren: './page/page.module#PageModule',
                 canActivate: [
+                    fromGuards.MenusGuard,
                     fromGuards.PrivatePagesGuard,
                 ]
             },
@@ -68,6 +69,7 @@ export const CORE_PROVIDERS: Array<any> = [
                 path: 'page/nested',
                 loadChildren: './page/page.module#PageModule',
                 canActivate: [
+                    fromGuards.MenusGuard,
                     fromGuards.PrivatePagesGuard,
                 ]
             }
