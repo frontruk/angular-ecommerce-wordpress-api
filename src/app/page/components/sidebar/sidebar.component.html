@@ -1,15 +1,25 @@
-<img class="brand" [src]="BrandLogo" />
+<img class="brand" [src]="BrandLogo" [routerLink]="['/']" />
 
-<ul>
-    <li><a routerLink="/">Home</a></li>
-    <li><a routerLink="/lazy">Lazy</a></li>
-    <li><a routerLink="/lazy/nested">Lazy_Nested</a></li>
-    <li><a routerLink="/page">page</a></li>
-    <li><a routerLink="/page/nested">page </a></li>
+<ul class="avatar-small">
+    <li><img [src]="BrandUx"></li>
+    <li><img [src]="BrandCarl"></li>
+    <li><img [src]="BrancChris"></li>
 </ul>
 
 
-
-
-
-
+<div class="authors">
+    <div class="avatar">
+        <img [src]="BrandCarl">
+        <span class="avatar-block">
+            <strong>Carl Worricker</strong>
+            <p>5yrs expert in UX</p>
+        </span>
+    </div>
+    <div class="avatar">
+        <img [src]="BrancChris">
+        <span class="avatar-block">
+            <strong>Chris Tarasovs</strong>
+             <p>11yrs expert in UX & CX</p>
+        </span>
+    </div>
+</div>

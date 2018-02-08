@@ -10,6 +10,9 @@ import { PublicPageServices } from './store/services/public-page.services';
 import { ArticleBlocksComponent } from './components/article-blocks/article-blocks.component';
 import { SidebarComponent } from './components/sidebar/sidebar.componet';
 import { BodyContentComponent } from './components/body-content/body-content.component';
+import { ArticleComponent } from './components/article/article.component';
+import { SectionsComponent } from './components/sections/sections.component';
+import { ArticleAnchorComponent } from './components/article-anchor/article-anchor.component';
 
 @NgModule({
     declarations: [
@@ -18,6 +21,9 @@ import { BodyContentComponent } from './components/body-content/body-content.com
         ArticleBlocksComponent,
         SidebarComponent,
         BodyContentComponent,
+        ArticleComponent,
+        SectionsComponent,
+        ArticleAnchorComponent,
     ],
     imports: [
         CommonModule,

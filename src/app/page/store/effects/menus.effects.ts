@@ -24,7 +24,6 @@ export class MenusEffects {
     constructor(private actions$: Actions,
                 private publicPageServices: PublicPageServices) {
     }
-
     @Effect({ dispatch: true })
     GetMenus$ = this.actions$.ofType(fromMenus.GET_MENUS)
         .pipe(
@@ -33,7 +32,6 @@ export class MenusEffects {
                     .getMenu(request.payload)
                     .pipe(
                         map((results: MenuCategory) => {
-                            console.log('Menulist', results.items)
                             return new fromMenus.GetMenusSuccess(results.items);
                         }),
                         catchError((error: HttpErrorResponse) => {

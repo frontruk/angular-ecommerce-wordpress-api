@@ -69,6 +69,7 @@ export function reducer(state: State = initialState, action: fromPage.PublicPage
             return state;
     }
 }
+export const PagesEntitiesByPaths = (state: State) => state.entitiesbyPath
 export const PagesEntitiesById = (state: State) => state.entities;
 export const Pages = (state: State) => state.data;
 export const arePagesLoading = (state: State) => state.loading;

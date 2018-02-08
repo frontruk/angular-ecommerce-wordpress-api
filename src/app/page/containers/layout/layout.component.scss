@@ -1,3 +1,85 @@
-:host{
-  display: block;
+@import '../../../../styles/vars';
+@import '../../../../styles/viewport';
+
+
+/* Grid container */
+.grid {
+  position: relative;
+
+}
+
+/* Overlay */
+.grid::after {
+  content: '';
+  background: rgba(202,202,202,0.4);
+  opacity: 0;
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: opacity $anim-time;
+  transition: opacity $anim-time;
+}
+
+.view-single .grid::after {
+  opacity: 1;
+}
+
+.article-sidebar{
+  .list-title{
+    display: block;
+    font-size: 1.175em;
+    padding: 15px 0px 0px 0px;
+  }
+}
+
+@media screen and (min-width: $viewport_s) {
+  .grid {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+}
+
+/* scroll helper wrap */
+.scroll-wrap {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+.article-show{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+  height: 0;
+  visibility: hidden;
+  z-index: 400;
+  overflow: hidden;
+}
+.article-show{
+  left: auto;
+  right: 0;
+  width: 100vw;
+}
+.article-show{
+  height: 100vh;
+  pointer-events: auto;
+  visibility: visible;
+}
+.sidebar-hide{
+  z-index: -1;
 }

@@ -30,12 +30,11 @@ export class MenusGuard implements CanActivate {
         return this.store.select(fromStore.areMenusLoaded)
             .pipe(
                 tap(loaded => {
-                    console.log('loaded MenusGuard', loaded)
                     if (!loaded) {
                         this.store.dispatch(new fromStore.GetMenus(2));
                         return loaded;
                     }
-                    return !loaded;
+                    return loaded;
                 }),
                 filter(loaded => loaded),
                 take(1)

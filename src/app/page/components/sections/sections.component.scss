@@ -1,0 +1,24 @@
+@import '../../../../styles/vars';
+.section-title{
+  margin: 0;
+  font-size: 1.475em;
+  font-family: $serif;
+  text-align: center;
+}
+.image-block{
+  width: 100%;
+  background-color: #fff;
+  img{
+    text-align: center;
+    display: block;
+    margin: 15px auto;
+    padding: 15px 0px;
+  }
+}
+ul{
+  padding-left: 42px;
+}
+h3{
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}

@@ -21,7 +21,6 @@ export class PublicPageServices {
         return this.http.get<Array<any>>(`${api.apiUrl + api.wp}/pages`);
     }
     getMenu(id): Observable<MenuCategory> {
-        console.log('aou')
         return this.http.get<MenuCategory>(`${api.apiUrl + api.menu}/menus/${id}`);
     }
 }

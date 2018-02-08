@@ -15,14 +15,14 @@ const initialState: State = {
 
 export function reducer(state: State = initialState, action: fromPage.PublicPageActions): State {
     switch (action.type) {
-
-        case fromPage.GET_PAGE_SUCCESS: {
-            return Object.assign({}, state, {
-                loading: false,
-                loaded: true,
-                data: action.payload
-            });
-        }
+        //
+        // case fromPage.GET_PAGE_SUCCESS: {
+        //     return Object.assign({}, state, {
+        //         loading: false,
+        //         loaded: true,
+        //         data: action.payload
+        //     });
+        // }
 
         default:
             return state;

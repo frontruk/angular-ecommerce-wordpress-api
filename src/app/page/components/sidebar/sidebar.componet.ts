@@ -17,7 +17,9 @@ import {
 
 export class SidebarComponent implements OnInit {
     BrandLogo = '/assets/ux-e-commerce.png';
-
+    BrandCarl = '/assets/carl-worricker.jpg';
+    BrancChris = '/assets/chris-tarasovs.jpg';
+    BrandUx =  '/assets/ux-small.png';
     /**
      * Css base class.
      */

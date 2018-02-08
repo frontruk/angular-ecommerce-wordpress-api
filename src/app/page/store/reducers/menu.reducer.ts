@@ -71,6 +71,7 @@ export function reducer(state: State = initialState, action: fromMenu.MenusActio
     }
 }
 export const menusEntitiesById = (state: State) => state.entities;
+export const menusEntitiesByPath = (state: State) => state.entitiesbyPath;
 export const menus = (state: State) => state.data;
 export const areMenusLoading = (state: State) => state.loading;
 export const areMenusLoaded = (state: State) => state.loaded;

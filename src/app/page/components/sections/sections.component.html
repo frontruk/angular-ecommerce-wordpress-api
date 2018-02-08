@@ -1,0 +1,8 @@
+<ng-container *ngIf="image">
+   <div class="image-block"><img [src]="image" [alt]="sections.section_image.title"></div>
+</ng-container>
+
+<h3>{{ sections.section_title }}</h3>
+<div [innerHTML]="sections.section_content"></div>
+
+

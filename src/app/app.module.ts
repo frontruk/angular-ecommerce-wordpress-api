@@ -23,10 +23,11 @@ import {
 } from './core/store';
 
 import * as fromGuards from './page/guards/';
+import { PageResolve } from './page/resolvers/page.resolve';
 
 const enviorment = {
-    development:    false,
-    production: true,
+    development:  false,
+    production:  true,
 };
 export const metaReducers: MetaReducer<any>[] = !enviorment.production ? [ storeFreeze ] : [];
 export const CORE_PROVIDERS: Array<any> = [
@@ -51,14 +52,15 @@ export const CORE_PROVIDERS: Array<any> = [
 
         BrowserModule.withServerTransition({ appId: 'my-app' }),
         RouterModule.forRoot([
+            // {
+            //     path: '',
+            //     component: HomeComponent,
+            //     pathMatch: 'full',
+            //
+            // },
             {
                 path: '',
-                component: HomeComponent,
                 pathMatch: 'full',
-
-            },
-            {
-                path: 'page',
                 loadChildren: './page/page.module#PageModule',
                 canActivate: [
                     fromGuards.MenusGuard,
@@ -66,16 +68,30 @@ export const CORE_PROVIDERS: Array<any> = [
                 ]
             },
             {
-                path: 'page/nested',
+                path: ':id',
                 loadChildren: './page/page.module#PageModule',
                 canActivate: [
                     fromGuards.MenusGuard,
                     fromGuards.PrivatePagesGuard,
-                ]
+                ],
+                resolve: {
+                    content: PageResolve
+                }
+            },
+            {
+                path: ':parentId/:pageId',
+                loadChildren: './page/page.module#PageModule',
+                canActivate: [
+                    fromGuards.MenusGuard,
+                    fromGuards.PrivatePagesGuard,
+                ],
+                resolve: {
+                    content: PageResolve
+                }
             }
         ])
     ],
-    providers: [ ...CORE_PROVIDERS, ...fromGuards.guards ],
+    providers: [ ...CORE_PROVIDERS, ...fromGuards.guards, PageResolve ],
     bootstrap: [ AppComponent ]
 })
 export class AppModule {

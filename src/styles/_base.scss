@@ -1,5 +1,28 @@
+@import './vars';
+
+body{
+  background-color: #f5f5f5;
+}
 
 *, *:after, *:before { -webkit-box-sizing: border-box; box-sizing: border-box; outline: none;}
 .clearfix:before, .clearfix:after { display: table;  content: ''; }
 .clearfix:after { clear: both; }
 
+body {
+
+  color: #7b7b7b;
+  font-weight: 400;
+  font-size: 16px;
+  font-family: $sansserif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+  overflow-y: scroll; /* force scroll to appear */
+}
+
+.title {
+  margin: 0;
+  font-size: 1.875em;
+  font-family: $serif;
+  text-align: center;
+}

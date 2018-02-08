@@ -1,0 +1,4 @@
+
+<h1 class="title article-title">{{ content.acf.page_title }}</h1>
+<div [innerHTML]="content.content.rendered"></div>
+<sections ux-sections  *ngFor="let block of sectionsList" [sections]="block"  [attr.id]="block.anchor_link"></sections>

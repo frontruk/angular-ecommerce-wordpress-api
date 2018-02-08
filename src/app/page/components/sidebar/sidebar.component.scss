@@ -4,7 +4,7 @@
 .brand{
   display: block;
   text-align: center;
-  margin: 0px auto;
+  margin: 0px 0px 24px 0px;
 }
 
 ul{
@@ -23,7 +23,7 @@ ul{
   height: 100vh;
   top: 0;
   left: 0;
-  padding: 2em 1em;
+  padding: 32px 45px;
 }
 .sidebar h1 {
   margin: 0.75em 0 0;
@@ -34,4 +34,42 @@ ul{
 
 .sidebar h1 span {
   display: block;
+}
+
+.avatar{
+  position: relative;
+  margin-bottom: 20px;
+  img{
+    border-radius: 50%;
+    width: 60px;
+    display: block;
+  }
+  p{
+    padding: 0px;
+    margin: 0px;
+    line-height: 18px;
+  }
+  .avatar-block {
+    color: $color_dark;
+    position: absolute;
+    padding-left: 71px;
+    padding-top: 0px;
+    text-align: left;
+    left: 0;
+    top: 0;
+  }
+}
+
+.avatar-small{
+  list-style: none;
+  flex-direction: row;
+  img{
+    border-radius: 50%;
+    width:100%;
+  }
+  li{
+    width: 30%;
+    padding: 0px 1%;
+    display: inline-block
+  }
 }
