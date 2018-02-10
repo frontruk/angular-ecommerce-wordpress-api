@@ -13,6 +13,8 @@ import { BodyContentComponent } from './components/body-content/body-content.com
 import { ArticleComponent } from './components/article/article.component';
 import { SectionsComponent } from './components/sections/sections.component';
 import { ArticleAnchorComponent } from './components/article-anchor/article-anchor.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from '../core/services/interceptors';
 
 @NgModule({
     declarations: [
@@ -38,7 +40,14 @@ import { ArticleAnchorComponent } from './components/article-anchor/article-anch
             }
         ])
     ],
-    providers: [ PublicPageServices ]
+    providers:
+        [
+            PublicPageServices,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: TokenInterceptor, multi: true
+        }
+    ]
 })
 export class PageModule {
 

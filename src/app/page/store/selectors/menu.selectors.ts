@@ -25,13 +25,8 @@ export const getMenuChildren = createSelector(
     fromRoot.getRouterState,
     getMenuEntitiesByPaths, (router, entities) => {
         if(router.state.url != '/'){
-            console.log('testingwwww ::::::', entities)
-            console.log('url', )
 
             const test = router.state.url.replace('/','');
-            console.log('test', test)
-            console.log('ddd ::::::' ,  entities[router.state.url.replace('/','')] )
-
             if(entities[router.state.url.replace('/','')]){
                 return entities[router.state.url.replace('/','')].children;
             }else{
@@ -40,19 +35,6 @@ export const getMenuChildren = createSelector(
         }
     }
 )
-
-
-// export const getMenuChildren = createSelector(
-//     fromPage.PagesEntitiesById,
-//     getAllMenusByIds, (router, entities) => {
-//         console.log('testing', entities)
-//         console.log('zzz', router)
-//        // console.log('ddd' ,  entities['http://ecommerce-ux.london' + router.state.url + '/'] )
-//        // return entities['http://ecommerce-ux.london' + router.state.url + '/'].id ;
-//         return true;
-//     }
-// )
-
 
 export const areMenusLoaded = createSelector(getMenuState, fromMenus.areMenusLoaded);
 export const areMenusLoading = createSelector(getMenuState, fromMenus.areMenusLoading);

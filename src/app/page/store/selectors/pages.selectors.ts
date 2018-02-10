@@ -3,6 +3,7 @@ import * as fromRoot from '../../../core/store';
 import * as fromFeature from '../reducers';
 import * as fromPages from '../reducers/public-pages.reducer';
 import * as fromPage from '../../../page/store';
+import { api } from '../../../core/environments/api.config';
 
 export const getPagesState = createSelector(
     fromFeature.getFeaturState,
@@ -14,7 +15,6 @@ export const getPagesEntitiesByPaths = createSelector(
 );
 export const getAllPagesByPath = createSelector(
     getPagesEntitiesByPaths, (entities) => {
-        console.log('entitiesentities', entities)
         return Object.keys(entities).map(path => entities[path]);
     }
 )
@@ -33,9 +33,8 @@ export const getSelectedPagebyId = createSelector(
     fromRoot.getRouterState,
     getPagesEntitiesByPaths, (router, entities) => {
         if(router.state.url != '/'){
-            console.log('testing', entities)
-            console.log('ddd' ,  entities['http://ecommerce-ux.london' + router.state.url + '/'] )
-            return entities['http://ecommerce-ux.london' + router.state.url + '/'].id ;
+            console.log( entities[ `${api.rootUrl + router.state.url}/`] )
+            return entities[  `${api.rootUrl + router.state.url}/` ].id ;
         }
     }
 )

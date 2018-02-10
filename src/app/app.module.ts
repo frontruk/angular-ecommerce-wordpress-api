@@ -24,6 +24,7 @@ import {
 
 import * as fromGuards from './page/guards/';
 import { PageResolve } from './page/resolvers/page.resolve';
+import { TokenInterceptor } from './core/services/interceptors';
 
 const enviorment = {
     development:  false,
@@ -31,6 +32,10 @@ const enviorment = {
 };
 export const metaReducers: MetaReducer<any>[] = !enviorment.production ? [ storeFreeze ] : [];
 export const CORE_PROVIDERS: Array<any> = [
+    {
+        provide: HTTP_INTERCEPTORS,
+        useClass: TokenInterceptor, multi: true
+    },
     {
         provide: RouterStateSerializer,
         useClass: CustomRouterStateSerializer
