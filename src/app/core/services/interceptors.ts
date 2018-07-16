@@ -20,7 +20,7 @@ export class TokenInterceptor implements HttpInterceptor {
         return req.clone({
             setHeaders: {
                 'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8',
-                'Access-Control-Allow-Origin': 'http://ecommerceux.wpengine.com',
+                'Access-Control-Allow-Origin': '*',
                 'Access-Control-Allow-Credentials': 'true',
                 'Access-Control-Allow-Methods': 'GET,HEAD,OPTIONS,POST,PUT',
                 'Access-Control-Allow-Headers' : 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers'
